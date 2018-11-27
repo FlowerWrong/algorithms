@@ -1,7 +1,6 @@
 package main
 
 import (
-	"./sort"
 	"log"
 	"math/rand"
 	"runtime"
@@ -16,10 +15,15 @@ func main() {
 	t1 := time.Now()
 
 	// input := []int{1, 7, 4, 9, 6, 6}
-	input := g(5)
-	log.Println(input)
-	sort.InsertionSort(input)
-	log.Println(input)
+	// input := g(5)
+	// log.Println(input)
+	// sort.InsertionSort(input)
+	// log.Println(input)
+
+	// input := []int{1, 3, 5, 7, 8, 4, 6, 9, 11, 30, 40}
+	// log.Println(input)
+	// sort.MergeSort(input, 0, (len(input) - 1))
+	// log.Println(input)
 
 	t2 := time.Now()
 	log.Println(t2.Sub(t1))

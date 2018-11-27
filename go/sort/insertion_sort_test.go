@@ -1,9 +1,10 @@
 package sort
 
 import (
-	"."
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/FlowerWrong/algorithm/go/sort"
+	"github.com/stretchr/testify/assert"
 )
 
 // go test *_test.go -test.bench=".*"
