@@ -1,10 +1,11 @@
 package sort
 
 import (
+	"log"
 	"math"
 )
 
-// MergeSort c * n * lgn
+// MergeSort O(n * lgn)
 func MergeSort(input []int, p, r int) {
 	// r := len(input) - 1
 	// p := 0
@@ -50,4 +51,5 @@ func merge(a []int, p, q, r int) {
 		}
 	}
 
+	log.Println(p, q, r, a)
 }
