@@ -7,6 +7,7 @@
 ## Books
 
 * [Introduction to Algorithms](http://mitpress.mit.edu/books/introduction-algorithms-third-edition)
+* [编程之法 — 面试和算法心得](https://www.kancloud.cn/kancloud/the-art-of-programming/41632)
 
 ## References
 
