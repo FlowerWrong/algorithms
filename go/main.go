@@ -5,8 +5,6 @@ import (
 	"math/rand"
 	"runtime"
 	"time"
-
-	"github.com/FlowerWrong/algorithm/go/question"
 )
 
 func main() {
@@ -27,8 +25,8 @@ func main() {
 	// sort.MergeSort(input, 0, (len(input) - 1))
 	// log.Println(input)
 
-	input := []int{13, -3, -15, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7}
-	log.Println(question.FindMaxCrossingSubarray(input, 0, 7, len(input)-1))
+	// input := []int{13, -3, -15, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7}
+	// log.Println(question.FindMaxCrossingSubarray(input, 0, 7, len(input)-1))
 
 	t2 := time.Now()
 	log.Println(t2.Sub(t1))

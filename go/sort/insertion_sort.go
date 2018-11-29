@@ -1,6 +1,6 @@
 package sort
 
-// InsertionSort O(n * n)
+// InsertionSort O(n * n) in place
 func InsertionSort(input []int) {
 	for i := 1; i < len(input); i++ {
 		tmp := input[i]

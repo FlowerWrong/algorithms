@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-// MergeSort O(n * lgn)
+// MergeSort O(n * lgn) not in place
 func MergeSort(input []int, p, r int) {
 	if p < r {
 		q1 := math.Floor(float64((p + r) / 2))
