@@ -1,9 +1,9 @@
-package linearlist
+package linkedlist
 
 import (
 	"testing"
 
-	"github.com/FlowerWrong/algorithm/go/structure/linearlist"
+	"github.com/FlowerWrong/algorithm/go/structure/linearlist/linkedlist"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -14,9 +14,8 @@ func TestSqList(t *testing.T) {
 		t.Skip("skipping test in short mode.")
 	}
 
-	l := linearlist.NewSqList(100)
+	l := linkedlist.NewLinkedList()
 	assert.Equal(t, true, l.IsEmpty(), "they should be equal")
-	assert.Equal(t, false, l.IsFull(), "they should be equal")
 
 	l.Append(1)
 	l.Append(2)
@@ -29,7 +28,7 @@ func TestSqList(t *testing.T) {
 	assert.Equal(t, nil, err, "they should be equal")
 	assert.Equal(t, 4, int(e), "they should be equal")
 
-	assert.Equal(t, []linearlist.Elem{1, 4, 5, 2, 3}, l.Data(), "they should be equal")
+	assert.Equal(t, []linkedlist.Elem{1, 4, 5, 2, 3}, l.Data(), "they should be equal")
 
 	l.Del(2)
 	assert.Equal(t, 4, l.Len(), "they should be equal")
@@ -39,5 +38,15 @@ func TestSqList(t *testing.T) {
 	assert.Equal(t, 5, int(e), "they should be equal")
 
 	l.Clear()
+	assert.Equal(t, true, l.IsEmpty(), "they should be equal")
+	assert.Equal(t, 0, l.Len(), "they should be equal")
+
+	err = l.Insert(1, 1)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 1, l.Len(), "they should be equal")
+	e, err = l.Get(1)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 1, int(e), "they should be equal")
+	l.Del(1)
 	assert.Equal(t, true, l.IsEmpty(), "they should be equal")
 }
