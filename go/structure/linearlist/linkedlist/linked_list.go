@@ -11,7 +11,7 @@ type Elem int
 
 // LinkedNode ...
 type LinkedNode struct {
-	Data Elem
+	data Elem
 	Next *LinkedNode
 }
 
@@ -40,7 +40,7 @@ func (list *LinkedList) Clear() {
 // Insert ...
 func (list *LinkedList) Insert(pos int, e Elem) error {
 	err := list.checkPos(pos)
-	if list.checkPos(pos) != nil {
+	if err != nil {
 		return err
 	}
 
@@ -51,7 +51,7 @@ func (list *LinkedList) Insert(pos int, e Elem) error {
 		index++
 	}
 
-	s := &LinkedNode{Data: e}
+	s := &LinkedNode{data: e}
 	if head == nil && list.len == 0 {
 		list.head = s
 	} else {
@@ -68,7 +68,7 @@ func (list *LinkedList) Append(e Elem) error {
 	for head != nil && head.Next != nil {
 		head = head.Next
 	}
-	s := &LinkedNode{Data: e, Next: nil}
+	s := &LinkedNode{data: e, Next: nil}
 	if head == nil && list.len == 0 {
 		list.head = s
 	} else {
@@ -84,10 +84,10 @@ func (list *LinkedList) Data() (eles []Elem) {
 		return eles
 	}
 	head := list.head
-	eles = append(eles, head.Data)
+	eles = append(eles, head.data)
 	for head.Next != nil {
 		head = head.Next
-		eles = append(eles, head.Data)
+		eles = append(eles, head.data)
 	}
 	return eles
 }
@@ -95,7 +95,7 @@ func (list *LinkedList) Data() (eles []Elem) {
 // Del ...
 func (list *LinkedList) Del(pos int) error {
 	err := list.checkPosGetDel(pos)
-	if list.checkPos(pos) != nil {
+	if err != nil {
 		return err
 	}
 
@@ -118,7 +118,7 @@ func (list *LinkedList) Del(pos int) error {
 // Get ...
 func (list *LinkedList) Get(pos int) (Elem, error) {
 	err := list.checkPosGetDel(pos)
-	if list.checkPos(pos) != nil {
+	if err != nil {
 		return 0, err
 	}
 
@@ -129,7 +129,7 @@ func (list *LinkedList) Get(pos int) (Elem, error) {
 		index++
 	}
 
-	return head.Data, nil
+	return head.data, nil
 }
 
 // Len ...

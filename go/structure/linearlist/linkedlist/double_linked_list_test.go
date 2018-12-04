@@ -9,13 +9,14 @@ import (
 
 // go test *_test.go -test.bench=".*"
 
-func TestLinkedList(t *testing.T) {
+func TestDoubleLinkedNode(t *testing.T) {
 	if testing.Short() {
 		t.Skip("skipping test in short mode.")
 	}
 
-	l := linkedlist.NewLinkedList()
+	l := linkedlist.NewDoubleLinkedNode()
 	assert.Equal(t, true, l.IsEmpty(), "they should be equal")
+	assert.Equal(t, 0, l.Len(), "they should be equal")
 
 	l.Append(1)
 	l.Append(2)

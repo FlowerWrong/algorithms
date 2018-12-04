@@ -32,7 +32,7 @@ func (list *SqList) IsFull() bool {
 // Insert ...
 func (list *SqList) Insert(pos int, e Elem) error {
 	err := list.checkPos(pos)
-	if list.checkPos(pos) != nil {
+	if err != nil {
 		return err
 	}
 
@@ -62,7 +62,7 @@ func (list *SqList) Clear() {
 // Del ...
 func (list *SqList) Del(pos int) error {
 	err := list.checkPos(pos)
-	if list.checkPos(pos) != nil {
+	if err != nil {
 		return err
 	}
 
@@ -82,7 +82,7 @@ func (list *SqList) Data() []Elem {
 // Get ...
 func (list *SqList) Get(pos int) (Elem, error) {
 	err := list.checkPos(pos)
-	if list.checkPos(pos) != nil {
+	if err != nil {
 		return 0, err
 	}
 
