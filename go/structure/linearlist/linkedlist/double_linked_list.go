@@ -6,12 +6,9 @@ import (
 
 // 循环双链表
 
-// Elem ...
-// type Elem int
-
 // DoubleLinkedNode ...
 type DoubleLinkedNode struct {
-	data Elem
+	data interface{}
 	Next *DoubleLinkedNode
 	Pre  *DoubleLinkedNode
 }
@@ -47,7 +44,7 @@ func (list *DoubleLinkedNode) Len() int {
 }
 
 // Data ...
-func (list *DoubleLinkedNode) Data() (eles []Elem) {
+func (list *DoubleLinkedNode) Data() (eles []interface{}) {
 	if list.Len() == 0 {
 		return eles
 	}
@@ -60,7 +57,7 @@ func (list *DoubleLinkedNode) Data() (eles []Elem) {
 }
 
 // Get ...
-func (list *DoubleLinkedNode) Get(pos int) (Elem, error) {
+func (list *DoubleLinkedNode) Get(pos int) (interface{}, error) {
 	err := list.checkPosGetDel(pos)
 	if err != nil {
 		return 0, err
@@ -77,7 +74,7 @@ func (list *DoubleLinkedNode) Get(pos int) (Elem, error) {
 }
 
 // Insert ...
-func (list *DoubleLinkedNode) Insert(pos int, e Elem) error {
+func (list *DoubleLinkedNode) Insert(pos int, e interface{}) error {
 	err := list.checkPos(pos)
 	if err != nil {
 		return err
@@ -122,7 +119,7 @@ func (list *DoubleLinkedNode) Del(pos int) error {
 }
 
 // Append ...
-func (list *DoubleLinkedNode) Append(e Elem) error {
+func (list *DoubleLinkedNode) Append(e interface{}) error {
 	p := list.Pre
 
 	node := &DoubleLinkedNode{data: e}

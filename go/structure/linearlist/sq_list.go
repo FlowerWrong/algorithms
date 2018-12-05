@@ -4,19 +4,16 @@ import "errors"
 
 // 顺序表
 
-// Elem ...
-type Elem int
-
 // SqList ...
 type SqList struct {
 	maxSize int
 	len     int
-	data    []Elem
+	data    []interface{}
 }
 
 // NewSqList ...
 func NewSqList(maxSize int) *SqList {
-	return &SqList{maxSize: maxSize, len: 0, data: make([]Elem, maxSize)}
+	return &SqList{maxSize: maxSize, len: 0, data: make([]interface{}, maxSize)}
 }
 
 // IsEmpty ...
@@ -30,7 +27,7 @@ func (list *SqList) IsFull() bool {
 }
 
 // Insert ...
-func (list *SqList) Insert(pos int, e Elem) error {
+func (list *SqList) Insert(pos int, e interface{}) error {
 	err := list.checkPos(pos)
 	if err != nil {
 		return err
@@ -45,7 +42,7 @@ func (list *SqList) Insert(pos int, e Elem) error {
 }
 
 // Append ...
-func (list *SqList) Append(e Elem) error {
+func (list *SqList) Append(e interface{}) error {
 	if list.IsFull() {
 		return errors.New("list is full")
 	}
@@ -75,12 +72,12 @@ func (list *SqList) Del(pos int) error {
 }
 
 // Data ...
-func (list *SqList) Data() []Elem {
+func (list *SqList) Data() []interface{} {
 	return list.data[:list.len]
 }
 
 // Get ...
-func (list *SqList) Get(pos int) (Elem, error) {
+func (list *SqList) Get(pos int) (interface{}, error) {
 	err := list.checkPos(pos)
 	if err != nil {
 		return 0, err
