@@ -17,6 +17,9 @@ func TestSqList(t *testing.T) {
 	q := structure.NewQueue()
 	assert.Equal(t, true, q.IsEmpty(), "they should be equal")
 
+	_, err := q.Dequeue()
+	assert.NotEqual(t, nil, err, "they should be equal")
+
 	q.Enqueue(1)
 	q.Enqueue(2)
 	q.Enqueue(3)

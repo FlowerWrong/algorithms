@@ -1,6 +1,10 @@
 package structure
 
-import "github.com/FlowerWrong/algorithm/go/structure/linearlist/linkedlist"
+import (
+	"errors"
+
+	"github.com/FlowerWrong/algorithm/go/structure/linearlist/linkedlist"
+)
 
 // FIFO: First-In-First-Out
 
@@ -38,9 +42,17 @@ func (q *Queue) Enqueue(e interface{}) error {
 
 // Dequeue ...
 func (q *Queue) Dequeue() (interface{}, error) {
+	if q.front == nil && q.rear == nil && q.len == 0 {
+		return nil, errors.New("empty queue")
+	}
 	node := q.front
-	q.front = node.Pre
-	node.Pre.Next = nil
+	if node.Pre == nil && q.rear == q.front && q.len == 1 {
+		q.front = nil
+		q.rear = nil
+	} else {
+		q.front = node.Pre
+		node.Pre.Next = nil
+	}
 	q.len--
 	return node.Data, nil
 }
