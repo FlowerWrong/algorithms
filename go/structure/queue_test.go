@@ -21,6 +21,9 @@ func TestSqList(t *testing.T) {
 	assert.NotEqual(t, nil, err, "they should be equal")
 
 	q.Enqueue(1)
+	_, err = q.Dequeue()
+	assert.Equal(t, nil, err, "they should be equal")
+	q.Enqueue(1)
 	q.Enqueue(2)
 	q.Enqueue(3)
 	q.Enqueue(4)
