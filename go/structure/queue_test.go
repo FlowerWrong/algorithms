@@ -9,7 +9,7 @@ import (
 
 // go test *_test.go -test.bench=".*"
 
-func TestSqList(t *testing.T) {
+func TestQueue(t *testing.T) {
 	if testing.Short() {
 		t.Skip("skipping test in short mode.")
 	}
