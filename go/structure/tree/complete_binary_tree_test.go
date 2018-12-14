@@ -42,4 +42,36 @@ func TestCompleteBinaryTree(t *testing.T) {
 		log.Println(err)
 	}
 	assert.Equal(t, true, f, "they should be equal")
+
+	tt2 := tree.NewCompleteBinaryTreeFromArr([]interface{}{1, 2, 3, 4, 5, 6})
+	assert.Equal(t, 6, tt2.Len(), "they should be equal")
+	f, err = tt2.IsCompleteBinaryTree()
+	if err != nil {
+		log.Println(err)
+	}
+	assert.Equal(t, true, f, "they should be equal")
+
+	log.Println(tt2.Arr())
+
+	n1, err := tt2.Get(4)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 4, n1.Data, "they should be equal")
+
+	n2, err := tt2.Get(1)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 1, n2.Data, "they should be equal")
+
+	n3, err := tt2.Get(3)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 3, n3.Data, "they should be equal")
+
+	n5, err := tt2.Get(5)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 5, n5.Data, "they should be equal")
+
+	err = tt2.Set(5, 100)
+	assert.Equal(t, nil, err, "they should be equal")
+	n5, err = tt2.Get(5)
+	assert.Equal(t, nil, err, "they should be equal")
+	assert.Equal(t, 100, n5.Data, "they should be equal")
 }

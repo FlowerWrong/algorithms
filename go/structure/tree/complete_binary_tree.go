@@ -1,6 +1,7 @@
 package tree
 
 import (
+	"errors"
 	"log"
 
 	"github.com/FlowerWrong/algorithm/go/structure"
@@ -17,6 +18,15 @@ type CompleteBinaryTree struct {
 // NewCompleteBinaryTree ...
 func NewCompleteBinaryTree() *CompleteBinaryTree {
 	return &CompleteBinaryTree{Root: nil, len: 0}
+}
+
+// NewCompleteBinaryTreeFromArr ...
+func NewCompleteBinaryTreeFromArr(arr []interface{}) *CompleteBinaryTree {
+	t := &CompleteBinaryTree{Root: nil, len: 0}
+	for _, v := range arr {
+		t.Push(v)
+	}
+	return t
 }
 
 // IsCompleteBinaryTree ...
@@ -92,6 +102,95 @@ func (t *CompleteBinaryTree) Push(e interface{}) error {
 	return nil
 }
 
+// Get ...
+func (t *CompleteBinaryTree) Get(i int) (*Node, error) {
+	q := structure.NewQueue()
+	node := t.Root
+	if node == nil {
+		return nil, errors.New("empty tree")
+	}
+	err := q.Enqueue(node)
+	if err != nil {
+		return nil, err
+	}
+
+	j := 1
+	for !q.IsEmpty() && j < i {
+		dNode, err := q.Dequeue()
+		if err != nil {
+			return nil, err
+		}
+		l := dNode.(*Node).LeftChild
+		r := dNode.(*Node).RightChild
+		if l != nil {
+			err = q.Enqueue(l)
+			if err != nil {
+				return nil, err
+			}
+		}
+		if r != nil {
+			err = q.Enqueue(r)
+			if err != nil {
+				return nil, err
+			}
+		}
+		j++
+	}
+	if q.IsEmpty() {
+		return nil, errors.New("not found")
+	}
+	resNode, err := q.Dequeue()
+	if err != nil {
+		return nil, err
+	}
+	return resNode.(*Node), nil
+}
+
+// Set ...
+func (t *CompleteBinaryTree) Set(i int, e interface{}) error {
+	q := structure.NewQueue()
+	node := t.Root
+	if node == nil {
+		return errors.New("empty tree")
+	}
+	err := q.Enqueue(node)
+	if err != nil {
+		return err
+	}
+
+	j := 1
+	for !q.IsEmpty() && j < i {
+		dNode, err := q.Dequeue()
+		if err != nil {
+			return err
+		}
+		l := dNode.(*Node).LeftChild
+		r := dNode.(*Node).RightChild
+		if l != nil {
+			err = q.Enqueue(l)
+			if err != nil {
+				return err
+			}
+		}
+		if r != nil {
+			err = q.Enqueue(r)
+			if err != nil {
+				return err
+			}
+		}
+		j++
+	}
+	if q.IsEmpty() {
+		return errors.New("not found")
+	}
+	resNode, err := q.Dequeue()
+	if err != nil {
+		return err
+	}
+	resNode.(*Node).Data = e
+	return nil
+}
+
 // Len ...
 func (t *CompleteBinaryTree) Len() int {
 	return t.len
@@ -137,6 +236,43 @@ func (node *Node) postOrder() {
 	node.LeftChild.postOrder()
 	node.RightChild.postOrder()
 	log.Println(node.Data)
+}
+
+// Arr ...
+func (t *CompleteBinaryTree) Arr() (arr []interface{}) {
+	q := structure.NewQueue()
+	node := t.Root
+	if node == nil {
+		return arr
+	}
+	err := q.Enqueue(node)
+	if err != nil {
+		return arr
+	}
+
+	for !q.IsEmpty() {
+		dNode, err := q.Dequeue()
+		if err != nil {
+			return arr
+		}
+		l := dNode.(*Node).LeftChild
+		r := dNode.(*Node).RightChild
+		if l != nil {
+			err = q.Enqueue(l)
+			if err != nil {
+				return arr
+			}
+		}
+		if r != nil {
+			err = q.Enqueue(r)
+			if err != nil {
+				return arr
+			}
+		}
+
+		arr = append(arr, dNode.(*Node).Data)
+	}
+	return arr
 }
 
 // LevelOrder ...
