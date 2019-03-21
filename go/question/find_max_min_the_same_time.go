@@ -1,6 +1,6 @@
 package question
 
-// FindMaxMin 同时找到最大最小值 O(1.5 * n)
+// FindMaxMin 同时找到最大最小值 O(1.5 * n) page 134
 func FindMaxMin(input []int) (max int, min int) {
 	size := len(input)
 
