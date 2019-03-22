@@ -5,6 +5,11 @@ import (
 	"sync"
 )
 
+// 散列表 page 157
+// 直接寻址 vs 散列方式
+
+// 链接法、开放寻址法
+
 // Key the key of the dictionary
 type Key interface{}
 

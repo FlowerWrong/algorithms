@@ -4,7 +4,7 @@ import (
 	"errors"
 )
 
-// 单链表
+// 单链表 singly linked list
 
 // LinkedNode ...
 type LinkedNode struct {
