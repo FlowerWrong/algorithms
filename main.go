@@ -16,5 +16,6 @@ func main() {
 
 	log.Println("Start LeetCode")
 
-	log.Println(leetcode.LengthOfLongestSubstring("abbca"))
+	s := "babad"
+	log.Println(leetcode.LongestPalindrome(s))
 }
